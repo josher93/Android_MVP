@@ -2,6 +2,7 @@ package io.jpotts18.android_mvp.domain.signin;
 
 import android.content.Context;
 
+import io.jpotts18.android_mvp.domain.models.ErrorResponseViewModel;
 import io.jpotts18.android_mvp.domain.signin.async.AsyncSigninInteractor;
 import io.jpotts18.android_mvp.domain.signin.async.OnSigninFinishedListener;
 
@@ -28,10 +29,16 @@ public class SigninPresenter implements ISigninPresenter, OnSigninFinishedListen
         interactor.validateCredentialsAsync(this, context, username, password, info, externlIp, deviceId);
     }
 
-    @Override
+    /*@Override
     public void onError()
     {
-        view.loginFailed();
+
+    }*/
+
+    @Override
+    public void onError(ErrorResponseViewModel errorResponse)
+    {
+        view.loginFailed(errorResponse);
     }
 
     @Override
